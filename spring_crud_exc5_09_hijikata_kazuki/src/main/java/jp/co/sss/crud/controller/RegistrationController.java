@@ -68,8 +68,7 @@ public class RegistrationController {
 	public String completeRegist(EmployeeForm employeeForm) {
 
 		//登録実行
-		//TODO RegisterEmployeeService完成後にコメントを外す
-		//		service.execute(employeeForm);
+		service.execute(employeeForm);
 
 		return "redirect:/regist/complete";
 	}

@@ -18,5 +18,5 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer>{
 	List<Employee> findByEmpNameContainingOrderByEmpIdAsc(String empName);
 	
 	//部署検索
-	List<Employee> findByCategoryOrderByEmpIdAsc(Department department);
+	List<Employee> findByDepartmentOrderByEmpIdAsc(Department department);
 }

@@ -25,9 +25,9 @@ public class SearchForEmployeesByEmpNameService {
 	 * 従業員データアクセス用リポジトリ。
 	 * Spring DIによって自動注入されます。
 	 */
-	//TODO ここに記述
 	@Autowired
 	EmployeeRepository empRepository;
+
 	/**
 	 * 従業員名による部分一致検索を実行します。
 	 * 
@@ -39,10 +39,10 @@ public class SearchForEmployeesByEmpNameService {
 	 * @return 検索文字列を含む従業員名を持つEmployeeBeanリスト（従業員ID昇順）。
 	 *         該当する従業員が存在しない場合は空のリストを返却
 	 */
-	//TODO ここに記述
-	public List<EmployeeBean> execute(String searchString){
+	public List<EmployeeBean> execute(String searchString) {
 
-		List<EmployeeBean> list = BeanManager.copyEntityListToBeanList(empRepository.findByEmpNameContainingOrderByEmpIdAsc(searchString));
+		List<EmployeeBean> list = BeanManager
+				.copyEntityListToBeanList(empRepository.findByEmpNameContainingOrderByEmpIdAsc(searchString));
 		return list;
 	}
 }

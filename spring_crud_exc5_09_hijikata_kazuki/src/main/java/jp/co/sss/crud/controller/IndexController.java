@@ -18,30 +18,50 @@ public class IndexController {
 	@Autowired
 	LoginService loginService;
 
+	/**
+	 * トップページ
+	 * 
+	 * @param loginForm ログイン入力フォーム
+	 * @return遷移先のビュー
+	 */
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String index(@ModelAttribute LoginForm loginForm) {
 		return "index";
 	}
 
+	/**
+	 * ログイン処理
+	 * 
+	 * @param loginForm ログイン入力フォーム
+	 * @param model モデル
+	 * @param sesson セッション
+	 * @return 遷移先のビュー
+	 */
 	@RequestMapping(path = "/login", method = RequestMethod.POST)
 	public String login(@ModelAttribute LoginForm loginForm, Model model, HttpSession sesson) {
 
 		String path = "index";
 
-		//TODO LoginServiceが完成後にコメントを外す
-				LoginResultBean loginResultBean = loginService.execute(loginForm);
-		
-				if (loginResultBean.isLogin()) {
-					sesson.setAttribute("loginUser", loginResultBean.getLoginUser());
-					path="redirect:/list";
-				} else {
-					model.addAttribute("errMessage", loginResultBean.getErrorMsg());
-				}
+		LoginResultBean loginResultBean = loginService.execute(loginForm);
+
+		//loginResultBeanでログイン判定
+		if (loginResultBean.isLogin()) {
+			sesson.setAttribute("loginUser", loginResultBean.getLoginUser());
+			path = "redirect:/list";
+		} else {
+			model.addAttribute("errMessage", loginResultBean.getErrorMsg());
+		}
 
 		return path;
 
 	}
 
+	/**
+	 * ログアウト
+	 * 
+	 * @param session セッション
+	 * @return 遷移先のビュー
+	 */
 	@RequestMapping(path = "/logout", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 

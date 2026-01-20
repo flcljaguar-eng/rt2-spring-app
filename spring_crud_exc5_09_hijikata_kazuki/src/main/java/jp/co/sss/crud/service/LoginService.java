@@ -26,7 +26,6 @@ public class LoginService {
 	 * 従業員データアクセス用リポジトリ。
 	 * Spring DIによって自動注入されます。
 	 */
-	//TODO ここに記述
 	@Autowired
 	EmployeeRepository empRepository;
 
@@ -47,10 +46,12 @@ public class LoginService {
 	 *         <li>失敗時：LoginResultBean.failLogin(エラーメッセージ)の結果</li>
 	 *         </ul>
 	 */
-	//TODO ここに記述
+	
 	public LoginResultBean execute(LoginForm loginForm) {
+		//EmployeeエンティティにIDとパスワードが一致する社員情報を代入
 		Employee employee = empRepository.findByEmpIdAndEmpPass(loginForm.getEmpId(), loginForm.getEmpPass());
 
+		//エンティティがnullでない場合ログイン成功、nullの場合メッセージを返す
 		if (employee != null) {
 			EmployeeBean empBean = new EmployeeBean();
 			empBean.setEmpId(employee.getEmpId());
@@ -58,7 +59,7 @@ public class LoginService {
 
 			return LoginResultBean.succeedLogin(empBean);
 		} else {
-			return LoginResultBean.failLogin("ログインに失敗しました");
+			return LoginResultBean.failLogin("社員ID、またはパスワードが間違っています");
 		}
 
 	}

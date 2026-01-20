@@ -25,7 +25,6 @@ public class SearchAllEmployeesService {
 	 * 従業員データアクセス用リポジトリ。
 	 * Spring DIによって自動注入されます。
 	 */
-	//TODO ここに記述
 	@Autowired
 	EmployeeRepository empRepository;
 
@@ -37,10 +36,9 @@ public class SearchAllEmployeesService {
 	 * 
 	 * @return 全従業員のEmployeeBeanリスト（従業員ID昇順）。データが存在しない場合は空のリストを返却
 	 */
-	//TODO ここに記述
 	public List<EmployeeBean> execute() {
-		List<EmployeeBean> list =BeanManager.copyEntityListToBeanList(empRepository.findAllByOrderByEmpIdAsc());
-		empRepository.findAllByOrderByEmpIdAsc();
+		List<EmployeeBean> list = BeanManager.copyEntityListToBeanList(empRepository.findAllByOrderByEmpIdAsc());
+
 		return list;
 	}
 }

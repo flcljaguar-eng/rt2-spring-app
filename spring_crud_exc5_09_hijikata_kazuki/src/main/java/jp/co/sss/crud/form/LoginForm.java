@@ -1,10 +1,18 @@
 package jp.co.sss.crud.form;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+
 public class LoginForm {
 	/** 社員ID */
+	@Max(value = 9999)
+	@NotBlank
 	private Integer empId;
 
 	/** パスワード */
+	@NotBlank
+	@Pattern(regexp = "^[a-zA-Z0-9]{0-16}$")
 	private String empPass;
 
 	/**

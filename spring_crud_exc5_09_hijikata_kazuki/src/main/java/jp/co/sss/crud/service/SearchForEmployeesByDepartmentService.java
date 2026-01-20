@@ -26,9 +26,9 @@ public class SearchForEmployeesByDepartmentService {
 	 * 従業員データアクセス用リポジトリ。
 	 * Spring DIによって自動注入されます。
 	 */
-	//TODO ここに記述
 	@Autowired
 	EmployeeRepository empRepository;
+
 	/**
 	 * 指定された部署に所属する従業員情報を取得します。
 	 * 
@@ -40,11 +40,11 @@ public class SearchForEmployeesByDepartmentService {
 	 * @return 指定部署に所属する従業員のEmployeeBeanリスト（従業員ID昇順）。
 	 *         該当する従業員が存在しない場合は空のリストを返却
 	 */
-	//TODO ここに記述
-	public List<EmployeeBean> execute(Integer deptId){
+	public List<EmployeeBean> execute(Integer deptId) {
 		Department department = new Department();
 		department.setDeptId(deptId);
-		List<EmployeeBean> list = BeanManager.copyEntityListToBeanList(empRepository.findByCategoryOrderByEmpIdAsc(department));
+		List<EmployeeBean> list = BeanManager
+				.copyEntityListToBeanList(empRepository.findByDepartmentOrderByEmpIdAsc(department));
 		return list;
 	}
 }

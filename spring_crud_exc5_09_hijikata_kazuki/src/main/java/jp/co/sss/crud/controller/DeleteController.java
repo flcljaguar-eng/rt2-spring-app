@@ -31,8 +31,7 @@ public class DeleteController {
 	@RequestMapping(path = "/delete/check", method = RequestMethod.GET)
 	public String checkDelete(Integer empId, Model model) {
 
-		//TODO SearchForEmployeesByEmpIdService完成後にコメントを外す
-		//		model.addAttribute("employee", searchForEmployeesByEmpIdService.execute(empId));
+		model.addAttribute("employee", searchForEmployeesByEmpIdService.execute(empId));
 
 		return "delete/delete_check";
 	}
@@ -45,11 +44,10 @@ public class DeleteController {
 	 * @return 遷移先のビュー
 	 */
 	@RequestMapping(path = "/delete/complete", method = RequestMethod.POST)
-	public String completeDelete(Integer empId) {
+	public String exeDelete(Integer empId) {
 
 		//削除実施
-		//TODO DeleteEmployeeService完成後にコメントを外す
-		//		deleteEmployeeService.execute(empId);
+		deleteEmployeeService.execute(empId);
 		return "redirect:/delete/complete";
 	}
 

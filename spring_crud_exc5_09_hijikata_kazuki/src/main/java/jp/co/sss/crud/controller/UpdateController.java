@@ -39,8 +39,7 @@ public class UpdateController {
 
 		EmployeeBean employee = null;
 
-		//TODO SearchForEmployeesByEmpIdService完成後にコメントを外す
-		//		employee = searchForEmployeesByEmpIdService.execute(empId);
+		employee = searchForEmployeesByEmpIdService.execute(empId);
 
 		employeeForm = BeanManager.copyBeanToForm(employee);
 		model.addAttribute("employeeForm", employee);
@@ -82,10 +81,9 @@ public class UpdateController {
 	 * @return 遷移先のビュー
 	 */
 	@RequestMapping(path = "/update/complete", method = RequestMethod.POST)
-	public String completeUpdate(EmployeeForm employeeForm) {
+	public String exeUpdate(EmployeeForm employeeForm) {
 
-		//TODO UpdateEmployeeService完成後にコメントを外す
-		//		updateEmployeeService.execute(employeeForm);
+		updateEmployeeService.execute(employeeForm);
 
 		return "redirect:/update/complete";
 	}
