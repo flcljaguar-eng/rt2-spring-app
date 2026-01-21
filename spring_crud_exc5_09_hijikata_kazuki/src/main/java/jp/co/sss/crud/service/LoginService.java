@@ -8,6 +8,7 @@ import jp.co.sss.crud.bean.LoginResultBean;
 import jp.co.sss.crud.entity.Employee;
 import jp.co.sss.crud.form.LoginForm;
 import jp.co.sss.crud.repository.EmployeeRepository;
+import jp.co.sss.crud.util.BeanManager;
 
 /**
  * ログイン認証処理を行うサービスクラス。
@@ -50,12 +51,11 @@ public class LoginService {
 	public LoginResultBean execute(LoginForm loginForm) {
 		//EmployeeエンティティにIDとパスワードが一致する社員情報を代入
 		Employee employee = empRepository.findByEmpIdAndEmpPass(loginForm.getEmpId(), loginForm.getEmpPass());
-
+		
 		//エンティティがnullでない場合ログイン成功、nullの場合メッセージを返す
 		if (employee != null) {
 			EmployeeBean empBean = new EmployeeBean();
-			empBean.setEmpId(employee.getEmpId());
-			empBean.setEmpPass(employee.getEmpPass());
+			empBean = BeanManager.copyEntityToBean(employee);
 
 			return LoginResultBean.succeedLogin(empBean);
 		} else {

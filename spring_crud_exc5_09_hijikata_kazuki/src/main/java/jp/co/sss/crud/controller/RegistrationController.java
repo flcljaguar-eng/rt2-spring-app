@@ -3,10 +3,12 @@ package jp.co.sss.crud.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jakarta.validation.Valid;
 import jp.co.sss.crud.form.EmployeeForm;
 import jp.co.sss.crud.service.RegisterEmployeeService;
 import jp.co.sss.crud.util.Constant;
@@ -38,12 +40,15 @@ public class RegistrationController {
 	 *            登録対象の社員情報
 	 * @param model
 	 *            モデル
-	 * @return 遷移先のビュー
 	 */
 	@RequestMapping(path = "/regist/check", method = RequestMethod.POST)
-	public String checkRegist(@ModelAttribute EmployeeForm employeeForm, Model model) {
-
-		return "regist/regist_check";
+	public String checkRegist(@Valid @ModelAttribute EmployeeForm employeeForm, BindingResult result, Model model) {
+		//入力内容が不正な形式の場合入力画面に戻す
+		if (result.hasErrors()) {
+			return "regist/regist_input";
+		} else {
+			return "regist/regist_check";
+		}
 	}
 
 	/**

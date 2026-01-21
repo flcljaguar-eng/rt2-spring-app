@@ -162,6 +162,12 @@ public class BeanManager {
 		return tempEmployeeBeans;
 	}
 
+	/**
+	 *  Employee -> EmployeeBean コピー
+	 * 
+	 * @param employee
+	 * @return
+	 */
 	public static EmployeeBean copyEntityToBean(Employee employee) {
 
 		EmployeeBean employeeBean = new EmployeeBean();
