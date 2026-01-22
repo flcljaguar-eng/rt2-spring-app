@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jp.co.sss.crud.bean.EmployeeBean;
 import jp.co.sss.crud.service.DeleteEmployeeService;
 import jp.co.sss.crud.service.SearchForEmployeesByEmpIdService;
 
@@ -30,8 +31,10 @@ public class DeleteController {
 	 */
 	@RequestMapping(path = "/delete/check", method = RequestMethod.GET)
 	public String checkDelete(Integer empId, Model model) {
+		EmployeeBean employee = null;
 
-		model.addAttribute("employee", searchForEmployeesByEmpIdService.execute(empId));
+		employee = searchForEmployeesByEmpIdService.execute(empId);
+		model.addAttribute("employee", employee);
 
 		return "delete/delete_check";
 	}

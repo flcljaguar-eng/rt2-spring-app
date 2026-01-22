@@ -27,7 +27,9 @@ public class IndexController {
 	 * @return遷移先のビュー
 	 */
 	@RequestMapping(path = "/", method = RequestMethod.GET)
-	public String index(@ModelAttribute LoginForm loginForm) {
+	public String index(@ModelAttribute LoginForm loginForm, HttpSession session) {
+		//何らかの形でログイン画面に戻された場合セッションスコープに保存されたログイン情報を削除する
+		session.invalidate();
 		return "index";
 	}
 

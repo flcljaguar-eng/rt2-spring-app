@@ -14,7 +14,7 @@ public class EmployeeForm {
 
 	/** パスワード */
 	@NotBlank
-	@Pattern(regexp = "^[a^zA-Z0-9]{0,16}$")
+	@Pattern(regexp = "^[a-zA-Z0-9]{0,16}$")
 	private String empPass;
 
 	/** 社員名 */

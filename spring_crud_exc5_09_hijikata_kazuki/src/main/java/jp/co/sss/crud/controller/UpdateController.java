@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import jp.co.sss.crud.bean.EmployeeBean;
 import jp.co.sss.crud.form.EmployeeForm;
@@ -87,9 +88,13 @@ public class UpdateController {
 	 * @return 遷移先のビュー
 	 */
 	@RequestMapping(path = "/update/complete", method = RequestMethod.POST)
-	public String exeUpdate(EmployeeForm employeeForm) {
+	public String exeUpdate(EmployeeForm employeeForm, HttpSession session) {
 
 		updateEmployeeService.execute(employeeForm);
+
+		//更新した内容をログインユーザを保存するセッションスコープに代入
+		EmployeeBean empBean = BeanManager.copyFormToBean(employeeForm);
+		session.setAttribute("loginUser", empBean);
 
 		return "redirect:/update/complete";
 	}
