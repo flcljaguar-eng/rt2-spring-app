@@ -11,7 +11,7 @@ body {
 .content {
 	display: flex;
 	flex-direction: row;
-	justify-content:space-between;
+	justify-content: space-between;
 	width: 920px;
 	margin: 0px auto;
 }
@@ -42,6 +42,15 @@ header .user_info {
 
 header .user_info a {
 	text-decoration: none;
+}
+
+header .title {
+	text-decoration: none;
+	color: #12526d;
+}
+
+a.login_user_name {
+	color: #a38484;
 }
 
 /* ---- サイドバー ---- */
@@ -78,7 +87,7 @@ aside input[type=submit] {
 
 /* ---- メイン ---- */
 article {
-	
+
 	width: 700px;
 	padding-left: 20px;
 }
@@ -92,4 +101,3 @@ footer {
 	font-size: 8pt;
 	line-height: 30px;
 }
-

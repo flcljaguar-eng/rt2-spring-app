@@ -8,9 +8,9 @@
 <body>
 	<th:block id="header" th:fragment="layout-header">
 		<div class="content">
-			<div class="title">社員管理システム</div>
+			<div><a  class="title" th:href="@{/list}">社員管理システム</a></div>
 			<div th:if="${session.loginUser != null}" class="user_info">
-				ようこそ、<a th:href="@{/update/input(empId=${session.loginUser.empId})}"><span
+				ようこそ、<a class="login_user_name" th:href="@{/update/input(empId=${session.loginUser.empId})}"><span  
 						th:text="${session.loginUser.empName}" th:value="${session.loginUser.empId}"></span></a>さん
 				<span class="pipeline">|</span><a th:href="@{/logout}">ログアウト</a>
 			</div>

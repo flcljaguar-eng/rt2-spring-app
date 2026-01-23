@@ -51,7 +51,9 @@ public class AccountCheckFilter extends HttpFilter {
 				chain.doFilter(request, response);
 				return;
 			} else {
-				response.sendRedirect("/spring_crud/");
+				
+				//権限がない場合ログアウト処理を実行
+				response.sendRedirect("/spring_crud/logout");
 				return;
 			}
 

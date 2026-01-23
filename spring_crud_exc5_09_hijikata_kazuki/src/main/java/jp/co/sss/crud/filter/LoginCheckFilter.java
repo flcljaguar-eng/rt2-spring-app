@@ -38,6 +38,7 @@ public class LoginCheckFilter extends HttpFilter {
 			chain.doFilter(request, response);
 			return;
 		}
+		
 		//セッション情報を取得
 		HttpSession session = request.getSession(false);
 		if (session == null) {

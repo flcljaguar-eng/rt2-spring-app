@@ -29,7 +29,8 @@ table {
 	margin: 0px auto 20px;
 }
 
-table td, table th {
+table td,
+table th {
 	border-width: 1px;
 	border-style: solid;
 	border-color: #87CEEB;
@@ -103,7 +104,7 @@ div.input {
 	width: 470px;
 	height: 35px;
 	text-align: left;
-	
+
 }
 
 select {
@@ -113,9 +114,10 @@ select {
 
 /* ---- 入力フォーム(ログイン) ---- */
 
-.login_form{
+.login_form {
 	display: flex;
 }
+
 div.login_label {
 
 	width: 305px;
@@ -125,12 +127,12 @@ div.login_label {
 }
 
 div.login_input {
-	
+
 	width: 410px;
 	height: 35px;
 	text-align: left;
 }
- 
+
 
 /* ---- 処理完了メッセージの出力箇所 ---- */
 div.message {
@@ -157,4 +159,3 @@ input[type=submit] {
 .warning {
 	color: #FF0000;
 }
-
