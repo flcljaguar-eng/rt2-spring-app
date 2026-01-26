@@ -80,6 +80,14 @@ table td {
 	padding-left: 5px;
 }
 
+/* --- ソートした時の表示 --- */
+th.sort-asc::after{
+	content:"↑";
+}
+th.sort-desc::after{
+	content:"↓";
+}
+
 /* ---- 入力フォーム(検索、登録、変更、削除) ---- */
 div.form {
 	display: flex;

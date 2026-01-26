@@ -22,7 +22,10 @@
 			<div class="form">
 				<div class="label">パスワード：</div>
 				<div class="input required">
-					<input type="password" th:field="*{empPass}" />
+					<input type="password" th:field="*{empPass}" id="password" />
+					<!--jsを利用してチェックボックスでパスワードを表示する-->
+					<input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()" />
+					<label for="showPassword">パスワードを表示する</label>
 				</div>
 			</div>
 
@@ -66,7 +69,7 @@
 			<div class="form" th:if="${session.loginUser.authority == 1}">
 				<div class="label">権限：</div>
 				<div class="input">
-					<input type="radio" th:field="*{authority}" value="1" checked/>一般&nbsp;&nbsp;
+					<input type="radio" th:field="*{authority}" value="1" checked />一般&nbsp;&nbsp;
 					<input disabled type="radio" th:field="*{authority}" value="2" />管理者
 				</div>
 			</div>
@@ -100,6 +103,7 @@
 			</div>
 		</form>
 	</div>
+	<script th:src="@{/js/showPassword.js}" type="text/javascript" charset="UTF-8"></script>
 </body>
 
 </html>

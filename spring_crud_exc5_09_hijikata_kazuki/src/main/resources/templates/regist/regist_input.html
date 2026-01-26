@@ -21,7 +21,10 @@
 			<div class="form">
 				<div class="label">パスワード：</div>
 				<div class="input required">
-					<input type="password" th:field="*{empPass}" />
+					<input type="password" th:field="*{empPass}" id="password" />
+					<!--jsを利用してチェックボックスでパスワードを表示する-->
+					<input type="checkbox" id="showPassword" onchange="togglePasswordVisibility()" />
+					<label for="showPassword">パスワードを表示する</label>
 				</div>
 			</div>
 
@@ -90,6 +93,7 @@
 			</div>
 		</form>
 	</div>
+	<script th:src="@{/js/showPassword.js}" type="text/javascript" charset="UTF-8"></script>
 </body>
 
 </html>
