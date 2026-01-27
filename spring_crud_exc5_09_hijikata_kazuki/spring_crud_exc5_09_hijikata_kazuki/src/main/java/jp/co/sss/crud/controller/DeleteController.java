@@ -46,11 +46,28 @@ public class DeleteController {
 	 * @param model モデル
 	 * @return 遷移先のビュー
 	 */
+//	@RequestMapping(path = "/delete/complete", method = RequestMethod.POST)
+//	public String exeDelete(Integer empId) {
+//
+//		//削除実施
+//		deleteEmployeeService.execute(empId);
+//		
+//		
+//		return "redirect:/delete/complete";
+//	}
+	
+	/**
+	 * 社員情報の論理削除
+	 * 
+	 * @param empId 社員ID
+	 * @return 遷移先のビュー
+	 */
 	@RequestMapping(path = "/delete/complete", method = RequestMethod.POST)
 	public String exeDelete(Integer empId) {
-
-		//削除実施
-		deleteEmployeeService.execute(empId);
+		EmployeeBean employeeBean = searchForEmployeesByEmpIdService.execute(empId);
+		
+		deleteEmployeeService.execute(employeeBean);
+		
 		return "redirect:/delete/complete";
 	}
 

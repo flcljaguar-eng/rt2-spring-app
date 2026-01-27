@@ -30,11 +30,6 @@ public class Employee {
 	
 	@Column
 	private Integer gender;
-	
-	public Employee() {
-		super();
-		
-	}
 
 	@Column
 	private String address;
@@ -44,6 +39,10 @@ public class Employee {
 	
 	@Column
 	private Integer authority;
+	
+	//0=在籍、1=削除として扱う削除フラグ
+	@Column
+	private Integer deleteFlag;
 	
 	@ManyToOne
 	@JoinColumn(name = "dept_id", referencedColumnName = "deptId")
@@ -111,5 +110,18 @@ public class Employee {
 
 	public void setDepartment(Department department) {
 		this.department = department;
+	}
+	
+	public Employee() {
+		super();
+		
+	}
+
+	public Integer getDeleteFlag() {
+		return deleteFlag;
+	}
+
+	public void setDeleteFlag(Integer deleteFlag) {
+		this.deleteFlag = deleteFlag;
 	}
 }
