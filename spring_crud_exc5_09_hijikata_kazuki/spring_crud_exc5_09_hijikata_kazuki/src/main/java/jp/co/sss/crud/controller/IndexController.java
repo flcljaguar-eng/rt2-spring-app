@@ -28,7 +28,11 @@ public class IndexController {
 	 */
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String index(@ModelAttribute LoginForm loginForm, HttpSession session) {
-		
+		//既にログイン処理を行っていた場合全社員リストへ遷移する
+		if (session.getAttribute("loginUser") != null) {
+			return "redirect:/list";
+		}
+
 		return "index";
 	}
 
@@ -41,12 +45,13 @@ public class IndexController {
 	 * @return 遷移先のビュー
 	 */
 	@RequestMapping(path = "/login", method = RequestMethod.POST)
-	public String login(@Valid @ModelAttribute LoginForm loginForm, BindingResult result, Model model, HttpSession sesson) {
+	public String login(@Valid @ModelAttribute LoginForm loginForm, BindingResult result, Model model,
+			HttpSession sesson) {
 
 		String path = "index";
 
 		LoginResultBean loginResultBean = loginService.execute(loginForm);
-		
+
 		//入力内容が不正な形式の場合トップページに返す
 		if (result.hasErrors()) {
 			return path;
