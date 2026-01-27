@@ -89,12 +89,18 @@ public class UpdateController {
 	 */
 	@RequestMapping(path = "/update/complete", method = RequestMethod.POST)
 	public String exeUpdate(EmployeeForm employeeForm, HttpSession session) {
-
+		//フォームに入力した内容を更新
 		updateEmployeeService.execute(employeeForm);
 
-		//更新した内容をログインユーザを保存するセッションスコープに代入
-		EmployeeBean empBean = BeanManager.copyFormToBean(employeeForm);
-		session.setAttribute("loginUser", empBean);
+		//indexControllerで生成したセッション情報からユーザのログイン情報を取得
+		EmployeeBean loginUser = (EmployeeBean) session.getAttribute("loginUser");
+
+		//更新したユーザとログインユーザが同一の場合セッションスコープを更新
+		if (loginUser.getEmpId() == employeeForm.getEmpId()) {
+			//更新した内容をログインユーザを保存するセッションスコープに代入
+			EmployeeBean empBean = BeanManager.copyFormToBean(employeeForm);
+			session.setAttribute("loginUser", empBean);
+		}
 
 		return "redirect:/update/complete";
 	}
