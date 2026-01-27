@@ -39,6 +39,9 @@ public class UpdateEmployeeService {
 	 */
 	public void execute(EmployeeForm employeeForm) {
 		Employee employee = BeanManager.copyFormToEntity(employeeForm);
+		
+		//論理削除用フラグ埋め込み
+		employee.setDeleteFlag(0);
 
 		employee = empRepository.save(employee);
 	}
