@@ -11,6 +11,9 @@ import jp.co.sss.crud.entity.Department;
 import jp.co.sss.crud.entity.Employee;
 import jp.co.sss.crud.form.EmployeeForm;
 
+/**
+ * Form,JavaBean,Entityの変換を行うユーティリティクラス
+ */
 public class BeanManager {
 
 	/**

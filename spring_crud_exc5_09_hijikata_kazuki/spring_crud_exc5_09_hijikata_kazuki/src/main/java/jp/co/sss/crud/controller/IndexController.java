@@ -14,17 +14,28 @@ import jp.co.sss.crud.bean.LoginResultBean;
 import jp.co.sss.crud.form.LoginForm;
 import jp.co.sss.crud.service.LoginService;
 
+/**
+ * ログイン、ログアウト処理を行うコントローラクラス。
+ * ログイン判定を行い、結果をビューに渡します。
+ * 
+ * @author k-hijikata
+ */
 @Controller
 public class IndexController {
 
+	/**
+	 * ログイン認証処理を行うサービスクラス。
+	 * Spring DIによって自動注入されます。
+	 */
 	@Autowired
 	LoginService loginService;
 
 	/**
 	 * トップページ
+	 * ログインしていない場合必ずこのページを表示する
 	 * 
 	 * @param loginForm ログイン入力フォーム
-	 * @return遷移先のビュー
+	 * @return 遷移先のビュー
 	 */
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String index(@ModelAttribute LoginForm loginForm, HttpSession session) {
@@ -38,6 +49,7 @@ public class IndexController {
 
 	/**
 	 * ログイン処理
+	 * 成功した場合取得したユーザ情報をセッションに保存する
 	 * 
 	 * @param loginForm ログイン入力フォーム
 	 * @param model モデル
@@ -69,7 +81,8 @@ public class IndexController {
 	}
 
 	/**
-	 * ログアウト
+	 * ログアウト処理
+	 * セッションスコープに保存されたユーザ情報を削除する
 	 * 
 	 * @param session セッション
 	 * @return 遷移先のビュー

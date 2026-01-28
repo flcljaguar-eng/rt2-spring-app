@@ -13,15 +13,26 @@ import jp.co.sss.crud.form.EmployeeForm;
 import jp.co.sss.crud.service.RegisterEmployeeService;
 import jp.co.sss.crud.util.Constant;
 
+/**
+ * 社員情報を登録するコントローラクラス
+ * フォームに入力された内容を対応するサービスクラスに渡します。
+ * 
+ * @author k-hijikata
+ */
 @Controller
 public class RegistrationController {
 
+	/**
+	 * 社員情報を登録するサービスクラス。
+	 * Spring DIによって自動注入されます。
+	 */
 	@Autowired
 	private RegisterEmployeeService service;
 
 	/**
 	 * 社員情報の登録内容入力画面を出力
 	 *
+	 * @param employeeForm 登録対象の社員情報
 	 * @return 遷移先のビュー
 	 */
 	@RequestMapping(path = "/regist/input", method = RequestMethod.GET)
@@ -52,9 +63,9 @@ public class RegistrationController {
 	}
 
 	/**
-	 * 変更内容入力画面に戻る
+	 * 登録内容入力画面に戻る
 	 *
-	 * @param employeeForm 変更対象の社員情報
+	 * @param employeeForm 登録対象の社員情報
 	 * @return 遷移先のビュー
 	 */
 	@RequestMapping(path = "/regist/back", method = RequestMethod.POST)

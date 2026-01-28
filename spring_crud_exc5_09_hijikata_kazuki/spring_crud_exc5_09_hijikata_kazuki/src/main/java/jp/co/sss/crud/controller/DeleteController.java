@@ -12,12 +12,26 @@ import jp.co.sss.crud.bean.EmployeeBean;
 import jp.co.sss.crud.service.DeleteEmployeeService;
 import jp.co.sss.crud.service.SearchForEmployeesByEmpIdService;
 
+/**
+ * 削除処理を行うコントローラクラス。
+ * 削除処理を対応するサービスクラスで行い、結果ををビューに渡します。
+ * 
+ * @author k-hijikata
+ */
 @Controller
 public class DeleteController {
 
+	/**
+	 * 社員IDによる検索を行うサービスクラス。
+	 * Spring DIによって自動注入されます。
+	 */
 	@Autowired
 	SearchForEmployeesByEmpIdService searchForEmployeesByEmpIdService;
 
+	/**
+	 * 削除処理を行うサービスクラス。
+	 * Spring DIによって自動注入されます。
+	 */
 	@Autowired
 	DeleteEmployeeService deleteEmployeeService;
 
@@ -40,7 +54,7 @@ public class DeleteController {
 	}
 
 	/**
-	 * 社員情報の削除
+	 * 社員情報の物理削除
 	 *
 	 * @param empId 社員ID
 	 * @param model モデル

@@ -1,7 +1,8 @@
 package jp.co.sss.crud.bean;
 
 /**
- * 
+ * ログイン情報を管理するJavaBeanクラス。
+ * ログイン判定、ログインユーザ情報、エラーメッセージを管理します。
  */
 public class LoginResultBean {
 
@@ -51,7 +52,7 @@ public class LoginResultBean {
 	/**
 	 * ログイン失敗時に呼び出すメソッド
 	 * 
-	 * @param loginUser
+	 * @param errorMsg
 	 * @return LoginResultBean
 	 */
 	public static LoginResultBean failLogin(String errorMsg) {
@@ -61,16 +62,26 @@ public class LoginResultBean {
 	/**
 	 * ログイン判定を取得
 	 * 
-	 * @return
+	 * @return isLogin
 	 */
 	public boolean isLogin() {
 		return isLogin;
 	}
 
+	/**
+	 * ログイン成功時のユーザ情報を取得
+	 * 
+	 * @return loginUser
+	 */
 	public EmployeeBean getLoginUser() {
 		return loginUser;
 	}
 
+	/**
+	 * ログイン失敗時エラーメッセージを返す
+	 * 
+	 * @return errorMsg
+	 */
 	public String getErrorMsg() {
 		return errorMsg;
 	}

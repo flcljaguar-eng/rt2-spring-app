@@ -69,8 +69,10 @@
 			<div class="form" th:if="${session.loginUser.authority == 1}">
 				<div class="label">権限：</div>
 				<div class="input">
-					<input type="radio" th:field="*{authority}" value="1" checked />一般&nbsp;&nbsp;
+					<input disabled type="radio" th:field="*{authority}" value="1" />一般&nbsp;&nbsp;
 					<input disabled type="radio" th:field="*{authority}" value="2" />管理者
+					<input type="hidden" th:field="*{authority}" />
+
 				</div>
 			</div>
 

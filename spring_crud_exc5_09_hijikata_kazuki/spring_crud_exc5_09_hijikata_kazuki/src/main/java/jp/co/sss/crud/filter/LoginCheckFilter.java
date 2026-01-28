@@ -12,6 +12,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jp.co.sss.crud.bean.EmployeeBean;
 
+/**
+ * ログイン判定を行うフィルター
+ * ログイン情報がない場合ログインページに遷移させる
+ */
 @Component
 public class LoginCheckFilter extends HttpFilter {
 	@Override

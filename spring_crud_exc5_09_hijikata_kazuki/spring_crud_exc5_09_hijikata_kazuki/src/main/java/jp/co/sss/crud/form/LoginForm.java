@@ -5,6 +5,12 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
+/**
+ * ログイン情報の入力を受け取るフォーム。
+ * 入力チェックも同時に行う。
+ * 
+ * @author k-hijikata
+ */
 public class LoginForm {
 	/** 社員ID */
 	@Max(value = 9999)

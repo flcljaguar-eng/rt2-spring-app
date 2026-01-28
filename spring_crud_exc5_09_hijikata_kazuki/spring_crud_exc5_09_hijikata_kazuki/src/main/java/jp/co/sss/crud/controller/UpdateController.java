@@ -18,12 +18,24 @@ import jp.co.sss.crud.service.SearchForEmployeesByEmpIdService;
 import jp.co.sss.crud.service.UpdateEmployeeService;
 import jp.co.sss.crud.util.BeanManager;
 
+/**
+ * 社員情報を更新するコントローラクラス
+ * 対応する処理をサービスクラスで行い、結果をビューに渡します。
+ */
 @Controller
 public class UpdateController {
 
+	/**
+	 * 社員情報を検索するサービスクラス。
+	 * Spring DIによって自動注入されます。
+	 */
 	@Autowired
 	SearchForEmployeesByEmpIdService searchForEmployeesByEmpIdService;
 
+	/**
+	 * 社員情報を更新するサービスクラス。
+	 * Spring DIによって自動注入されます。
+	 */
 	@Autowired
 	UpdateEmployeeService updateEmployeeService;
 

@@ -14,15 +14,33 @@ import jp.co.sss.crud.service.SearchAllEmployeesService;
 import jp.co.sss.crud.service.SearchForEmployeesByDepartmentService;
 import jp.co.sss.crud.service.SearchForEmployeesByEmpNameService;
 
+/**
+ * 検索結果を表示するコントローラクラス。
+ * 対応するサービスクラスから得た情報をビューに渡します。
+ * 
+ * @author k-hijikata
+ */
 @Controller
 public class ListController {
 
+	/**
+	 * 全社員を検索するサービスクラス。
+	 * Spring DIによって自動注入されます。
+	 */
 	@Autowired
 	SearchAllEmployeesService searchAllEmployeesService;
 
+	/**
+	 * 社員名検索を行うサービスクラス。
+	 * Spring DIによって自動注入されます。
+	 */
 	@Autowired
 	SearchForEmployeesByEmpNameService searchForEmployeesByEmpNameService;
 
+	/**
+	 * 部署名検索を行うサービスクラス。
+	 * Spring DIによって自動注入されます。
+	 */
 	@Autowired
 	SearchForEmployeesByDepartmentService searchForEmployeesByDepartmentService;
 

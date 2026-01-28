@@ -12,6 +12,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jp.co.sss.crud.bean.EmployeeBean;
 
+/**
+ * 権限チェックを行うフィルター
+ * 権限レベルが2以上であるかチェックする
+ */
 @Component
 public class AccountCheckFilter extends HttpFilter {
 	@Override

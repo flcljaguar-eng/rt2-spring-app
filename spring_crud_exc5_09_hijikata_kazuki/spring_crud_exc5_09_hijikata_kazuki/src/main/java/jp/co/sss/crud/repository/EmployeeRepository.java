@@ -9,6 +9,12 @@ import org.springframework.data.repository.query.Param;
 import jp.co.sss.crud.entity.Department;
 import jp.co.sss.crud.entity.Employee;
 
+/**
+ * 従業員情報にアクセスするリポジトリ
+ * Employeeエンティティに対する検索機能を提供する
+ * 
+ * @author k-hijikata
+ */
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 	//	//ログイン
 	//	Employee findByEmpIdAndEmpPass(Integer empId, String empPass);
@@ -26,15 +32,15 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 	//	Employee findByEmpId(Integer empId);
 	//	
 
-	/**
-	 * 以下、論理削除用
+	/*
+	 * 以下、論理削除の実装後使用する
 	 */
 	//ログイン
-	@Query("SELECT e FROM Employee e WHERE e.empId = ?1 AND e.empPass = ?2 AND e.deleteFlag = 0")
+	@Query("SELECT e FROM Employee e WHERE e.empId = ?1 AND e.empPass = ?2 AND e.deleteFlag = 0 ORDER BY e.empId")
 	Employee findByEmpIdAndEmpPass(Integer empId, String empPass);
 
 	//全件検索
-	@Query("SELECT e FROM Employee e WHERE e.deleteFlag = 0")
+	@Query("SELECT e FROM Employee e WHERE e.deleteFlag = 0 ORDER BY e.empId")
 	List<Employee> findAllByOrderByEmpIdAsc();
 
 	//社員名検索

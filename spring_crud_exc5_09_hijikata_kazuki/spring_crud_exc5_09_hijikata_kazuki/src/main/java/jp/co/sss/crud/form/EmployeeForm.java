@@ -8,6 +8,12 @@ import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
+/**
+ * 入力した内容を保持するフォームクラス
+ * 従業員の情報を保持し、入力内容の形式チェックも行う。
+ * 
+ * @author k-hijikata
+ */
 public class EmployeeForm {
 	/** 社員ID */
 	private Integer empId;

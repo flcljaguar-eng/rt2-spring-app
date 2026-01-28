@@ -37,12 +37,18 @@ public class DeleteEmployeeService {
 		empRepository.deleteById(forDeleteEmpId);
 	}
 
+	/**
+	 * 指定された従業員IDの従業員情報を論理削除メソッド。
+	 * データベースから該当する従業員レコードの論理削除フラグを有効にします。
+	 * 
+	 * @param employeeBean
+	 */
 	public void execute(EmployeeBean employeeBean) {
 		EmployeeForm employeeForm = BeanManager.copyBeanToForm(employeeBean);
 		Employee employee = BeanManager.copyFormToEntity(employeeForm);
-		
+
 		employee.setDeleteFlag(1);
-		
+
 		employee = empRepository.save(employee);
 	}
 }
