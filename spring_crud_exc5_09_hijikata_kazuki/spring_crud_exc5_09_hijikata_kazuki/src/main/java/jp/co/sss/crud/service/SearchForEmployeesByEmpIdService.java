@@ -37,7 +37,10 @@ public class SearchForEmployeesByEmpIdService {
 	 * @return 該当する従業員のEmployeeBean
 	 */
 	public EmployeeBean execute(Integer empId) {
+		//論理削除済データも検索できる
 		Employee employee = empRepository.getReferenceById(empId);
+		//論理削除済みデータは検索されない
+//		Employee employee = empRepository.findByEmpId(empId);
 		EmployeeBean empBean = BeanManager.copyEntityToBean(employee);
 		return empBean;
 	}
